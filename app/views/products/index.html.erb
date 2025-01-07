@@ -1,16 +1,22 @@
 <h1><%= t "hello" %></h1>
-
 <h1><%= t ".title" %></h1>
 
+<!-- Nút hành động -->
+<div class="action-buttons">
+  <%= link_to "New product", new_product_path if authenticated? %>
+  <%= link_to "Login", new_session_path unless authenticated? %>
+</div>
 
-<%= link_to "New product", new_product_path if authenticated? %>
-<%= link_to "Login", new_session_path unless authenticated? %>
-
-
+<!-- Danh sách sản phẩm -->
 <div id="products">
   <% @products.each do |product| %>
     <div>
       <%= link_to product.name, product %>
     </div>
   <% end %>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  &copy; <%= Time.current.year %> Your Company. All Rights Reserved.
 </div>
