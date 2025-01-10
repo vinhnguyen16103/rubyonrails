@@ -1,0 +1,34 @@
+<h1>Tạo Người dùng mới</h1>
+
+<%= form_with model: @user, url: users_path, method: :post do |form| %>
+  <% if @user.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :email_address %>
+    <%= form.email_field :email_address, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password_confirmation, "Confirm Password" %>
+    <%= form.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.submit "Tạo Người dùng", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<%= link_to 'Quay lại', users_path, class: "btn btn-secondary" %>
